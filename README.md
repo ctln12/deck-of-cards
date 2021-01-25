@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Deck of Cards
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Description
 
-## Available Scripts
+This project aims to practice React LifeCycle Methods and use an API. The goal is to build an app that displays a deck of cards, one card at a time.
 
-In the project directory, you can run:
+The different tasks to complete are:
 
-### `yarn start`
+- When the page loads, send a request to [https://deckofcardsapi.com/api/deck/new/shuffle](https://deckofcardsapi.com/api/deck/new/shuffle) to create a new deck
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Store the Deck ID it gives you, so you can make further requests to retreive each card image
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Add a button to your app that allows a user to draw a new card
 
-### `yarn test`
+- When a user clicks the button, send another request this time to [https://deckofcardsapi.com/api/deck/${deck_id}/draw/](https://deckofcardsapi.com/api/deck/${deck_id}/draw/) using the Deck ID
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Use the data included in the response to display a new card image, and make sure to include an informative alt attribute
 
-### `yarn build`
+- Every time the user clicks, the app should display a new card until the deck is empty. Make sure to tell the user there are no cards left!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The app displays an interface that looks like this:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![deck of cards](./src/deck_of_cards.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Technologies
 
-### `yarn eject`
+*Languages:* Javascript, HTML, CSS
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+*Library:* React
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Key features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Clicking on a button allows the user to draw a card
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* The cards display on top of each others
 
-## Learn More
+* The user is notified when there are no cards left
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Poject status
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The project is just started.
 
-### Code Splitting
+### Credits & Sources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Another small project from [The Modern React Bootcamp](https://www.udemy.com/course/modern-react-bootcamp)
