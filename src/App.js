@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Deck } from './Deck';
+import Deck from './Deck';
 
 class App extends Component {
   render() {

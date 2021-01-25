@@ -2,36 +2,51 @@ import React, { Component } from 'react';
 import axios from "axios";
 import Card from "./Card";
 
+const API_BASE_URL = "https://deckofcardsapi.com/api/deck";
+
 class Deck extends Component {
   constructor(props){
     super(props);
-    this.state = { deckId: undefined, remainingCards: undefined, cards: [] };
-    this.handleClick = this.handleClick.bind(this);
+    this.state = { deck: null, cards: [] };
+    this.getCard = this.getCard.bind(this);
   }
-  componentDidMount(){
-    axios.get("https://deckofcardsapi.com/api/deck/new/shuffle")
-      .then(response => {
-        this.setState({ deckId: response.data.deck_id, remainingCards: response.data.remaining })
-      })
+  async componentDidMount(){
+    let deck = await axios.get(`${API_BASE_URL}/new/shuffle`);
+    this.setState({ deck: deck.data });
   }
-  handleClick(evt){
-    axios.get(`https://deckofcardsapi.com/api/deck/${this.state.deckId}/draw/`)
-      .then(response => {
-        const card = { id: response.data.cards[0].code, imgUrl: response.data.cards[0].image, value: response.data.cards[0].value, suit: response.data.cards[0].suit };
-        this.setState({...this.state, remainingCards: response.data.remaining, cards: [...this.state.cards, card] });
-      })
+  async getCard(evt){
+    let deckId = this.state.deck.deck_id;
+    try {
+      let cardUrl = `${API_BASE_URL}/${deckId}/draw/`;
+      let cardRes = await axios.get(cardUrl);
+      if (!cardRes.data.success) {
+        throw new Error("No cards remaining!");
+      }
+      let card = cardRes.data.cards[0];
+      this.setState(st => ({
+        cards: [
+          ...st.cards,
+          {
+            id: card.code,
+            imgUrl: card.image,
+            name: `${card.value} of ${card.suit.toLowerCase()}`
+          }
+        ]
+      }));
+    } catch (error) {
+      alert(error);
+    }
   }
   render() {
-    if (this.state.remainingCards === 0) { alert('Deck of cards is empty!') }
+    const cards = this.state.cards.map(card => <Card imgUrl={card.imgUrl} name={card.name} key={card.id} />);
     return (
       <div className="Deck">
-        <button onClick={this.handleClick} disabled={this.state.remainingCards === 0}>GIMME A CARD!</button>
-        <div className="cards">
-          {this.state.cards.map(card => <Card card={card} key={card.id} />)}
-        </div>
+        <h1>Card Dealer</h1>
+        <button onClick={this.getCard}>GIMME A CARD!</button>
+        <div className="cards">{cards}</div>
       </div>
     );
   }
 }
 
-export { Deck };
+export default Deck;
