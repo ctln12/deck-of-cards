@@ -42,9 +42,10 @@ class Deck extends Component {
     const cards = this.state.cards.map(card => <Card imgUrl={card.imgUrl} name={card.name} key={card.id} />);
     return (
       <div className="Deck">
-        <h1>Card Dealer</h1>
-        <button onClick={this.getCard}>GIMME A CARD!</button>
-        <div className="cards">{cards}</div>
+        <h1 className="Deck-title">♦︎ Card Dealer ♦︎</h1>
+        <h2 className="Deck-title subtitle">♦︎ A little demo made with React ♦︎</h2>
+        <button className="Deck-btn" onClick={this.getCard}>Get Card!</button>
+        <div className="Deck-cards">{cards}</div>
       </div>
     );
   }
