@@ -26,19 +26,19 @@ The app displays an interface that looks like this:
 
 *Languages:* Javascript, HTML, CSS
 
-*Library:* React
+*Libraries:* React, Axios
 
 ### Key features
 
 * Clicking on a button allows the user to draw a card
 
-* The cards display on top of each others
+* The cards display on top of each other
 
 * The user is notified when there are no cards left
 
 ### Poject status
 
-The project is just started.
+The project is done.
 
 ### Credits & Sources
 
